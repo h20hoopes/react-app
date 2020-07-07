@@ -1,14 +1,38 @@
 {
   "navigationItems": [
-    { "name": "Home", "link": "/", "sublinks": [] },
-    { "name": "Blog", "link": "/blog", "sublinks": [] },
-    { "name": "Experimental", "link": "/experimental", "sublinks": [] },
+    { "name": "Home", "link": "/", "group": "top-navigation", "sublinks": [] },
+    {
+      "name": "Blog",
+      "link": "/blog",
+      "group": "top-navigation",
+      "sublinks": []
+    },
+    {
+      "name": "Experimental",
+      "link": "/experimental",
+      "group": "top-navigation",
+      "sublinks": []
+    },
     {
       "name": "Personal",
       "link": null,
+      "group": "top-navigation",
       "sublinks": [
         { "name": "Music", "link": "/music", "sublinks": [] },
-        { "name": "Mana Beadwork", "link": "/mana-beadwork", "sublinks": [] },
+        {
+          "name": "Mana Beadwork",
+          "link": "/mana-beadwork",
+          "sublinks": [
+            {
+              "name": "Bananas",
+              "link": "/bananas",
+              "sublinks": [
+                { "name": "Apples", "link": "/apples", "sublinks": [] }
+              ]
+            },
+            { "name": "Oranges", "link": "/oranges", "sublinks": [] }
+          ]
+        },
         { "name": "Music Videos", "link": "/music-videos", "sublinks": [] },
         {
           "name": "Future Projects",
@@ -20,6 +44,7 @@
     {
       "name": "Professional",
       "link": null,
+      "group": "top-navigation",
       "sublinks": [
         { "name": "Research", "link": "/research", "sublinks": [] },
         { "name": "Data Analytics", "link": "/data-analytics", "sublinks": [] },
@@ -31,11 +56,22 @@
           "sublinks": []
         },
         { "name": "Service", "link": "/service", "sublinks": [] },
-        { "name": "IT Security", "link": "/it-security", "sublinks": [] },
+        {
+          "name": "IT Security",
+          "link": "/it-security",
+          "sublinks": [
+            { "name": "Some random thing", "link": "/random", "sublinks": [] }
+          ]
+        },
         { "name": "Database", "link": "/database", "sublinks": [] }
       ]
     },
-    { "name": "Contact", "link": "/contact", "sublinks": [] }
+    {
+      "name": "Contact",
+      "link": "/contact",
+      "group": "top-navigation",
+      "sublinks": []
+    }
   ],
   "testData": [
     { "value": "This is the value of this thing" },

@@ -9,48 +9,62 @@ import Button from "react-bootstrap/Button";
 
 class Child extends Component {
   render() {
-    const navigation = this.props.settings.navigationItems;
+    const navigationProps = this.props.settings.navigationItems;
+    const navigation = makeNavigation(navigationProps);
 
-    return (
-      <Navbar bg="light" expand="lg">
-        <Navbar.Collapse>
-          <Nav className="mr-auto">
-            {navigation.map((listItem) =>
-              listItem.sublinks.length > 0 ? ( // if there are sublinks ie needs dropdown
-                <NavDropdown
-                  title={listItem.name}
-                  id="basic-nav-dropdown"
-                  key={listItem.name}
-                >
-                  {listItem.sublinks.map((sublink) => (
-                    <NavDropdown.Item
-                      className="dropdown-item"
-                      href={sublink.link}
-                      key={sublink.name}
-                    >
-                      {sublink.name}
-                    </NavDropdown.Item>
-                  ))}
-                </NavDropdown>
-              ) : (
-                // else
-                <Nav.Link
-                  className="nav-item"
-                  href={listItem.link}
-                  key={listItem.name}
-                >
-                  {listItem.name}
-                </Nav.Link>
-              )
-            )}
-          </Nav>
-          <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-success">Search</Button>
-          </Form>
-        </Navbar.Collapse>
-      </Navbar>
-    );
+    return <React.Fragment>{navigation}</React.Fragment>;
+  }
+}
+
+function makeNavigation(navigation) {
+  return (
+    <Navbar bg="light" expand="lg">
+      <Navbar.Collapse>
+        <Nav className="mr-auto">{makeNavItems(navigation)}</Nav>
+        <React.Fragment>{makeForm()}</React.Fragment>
+      </Navbar.Collapse>
+    </Navbar>
+  );
+}
+
+function makeNavItemsWithIteration(listOfNavItems) {
+  let navItem = listOfNavItems.map((listItem) =>
+    listItem.sublinks.length > 0 ? (
+      <NavDropdown // if sublinks
+        className={isFirstLevel(listItem.group) ? "dropdown" : "dropright"}
+        title={listItem.name}
+        key={listItem.name}
+      >
+        {makeNavItemsWithIteration(listItem.sublinks)}
+      </NavDropdown>
+    ) : (
+      // if no sublinks
+      <Nav.Link className="nav-item" href={listItem.link} key={listItem.name}>
+        {listItem.name}
+      </Nav.Link>
+    )
+  );
+  return navItem;
+}
+
+function makeNavItems(listOfNavItems) {
+  return makeNavItemsWithIteration(listOfNavItems, 0);
+}
+
+function makeForm() {
+  return (
+    <Form inline>
+      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+      <Button variant="outline-success">Search</Button>
+    </Form>
+  );
+}
+
+function isFirstLevel(group) {
+  if (group !== "top-navigation") {
+    return false;
+  } else {
+    return true;
   }
 }
 
