@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import Navigation from "../components/Navigation";
 
-class Blog extends Component {
+class HomePage extends Component {
   render() {
     return (
       <React.Fragment>
         <Navigation settings={this.props.settings} />
-        <div>This is the Blog</div>
+        <div>This is the Home Page</div>
       </React.Fragment>
     );
   }
 }
 
-export default Blog;
+export default HomePage;

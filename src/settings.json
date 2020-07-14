@@ -1,4 +1,12 @@
 {
+  "pages": [
+    {
+      "name": "Home",
+      "link": "/",
+      "group": "top-navigation",
+      "inNavigation": true
+    }
+  ],
   "navigationItems": [
     { "name": "Home", "link": "/", "group": "top-navigation", "sublinks": [] },
     {

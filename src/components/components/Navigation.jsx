@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../bootstrap-4.5.0-dist/css/bootstrap.css";
+import "../../bootstrap-4.5.0-dist/css/bootstrap.css";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Nav from "react-bootstrap/Nav";
@@ -7,7 +7,7 @@ import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 
-class Child extends Component {
+class Navigation extends Component {
   render() {
     const navigationProps = this.props.settings.navigationItems;
     const navigation = makeNavigation(navigationProps);
@@ -68,4 +68,4 @@ function isFirstLevel(group) {
   }
 }
 
-export default Child;
+export default Navigation;
